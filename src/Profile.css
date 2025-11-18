@@ -327,3 +327,87 @@ input[type="checkbox" i] {
 .cancel-delete:hover {
   background: #4b5563;
 }
+/* ---------- Мобильная адаптация ---------- */
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .add-task {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .task-list {
+    width: 100%;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filters button {
+    flex: 1 1 calc(50% - 0.5rem);
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .search-filters {
+    gap: 0.5rem;
+  }
+
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-right {
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+
+  .task-right .subject {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .task-right .buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  input[type="checkbox" i] {
+    margin-top: 5px;
+  }
+
+  .inline-inputs {
+    flex-direction: column;
+  }
+
+  .inline-inputs div {
+    width: 100%;
+  }
+}
+
