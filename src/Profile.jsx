@@ -227,7 +227,7 @@ export default function Profile() {
             onChange={(e) =>
               setEditing((prev) => ({ ...prev, title: e.target.value }))
             }
-            placeholder="ДЗ №12 — упр. 14–18"
+            placeholder="ДЗ №12 - упр. 14–18"
           />
 
           <div className="inline-inputs">
@@ -389,3 +389,4 @@ export default function Profile() {
     </div>
   );
 }
+
