@@ -163,14 +163,16 @@ export default function Profile() {
   ).length;
 
   const nearestDate = (() => {
-    const upcoming = tasks
-      .filter((t) => normalizeDate(t.due_date) >= today)
-      .sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
+  const upcoming = tasks
+    .filter(t => !t.done) 
+    .filter(t => normalizeDate(t.due_date) >= today) 
+    .sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
 
-    if (upcoming.length === 0) return "—";
+  if (upcoming.length === 0) return "—";
 
-    return new Date(upcoming[0].due_date).toLocaleDateString("ru-RU");
-  })();
+  return new Date(upcoming[0].due_date).toLocaleDateString("ru-RU");
+})();
+
 
   if (loading)
     return (
@@ -394,3 +396,4 @@ export default function Profile() {
     </div>
   );
 }
+
