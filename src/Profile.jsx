@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import "./Profile.css";
+const normalizeDate = (date) => {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  return d;
+};
+
+const today = normalizeDate(new Date());
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -152,8 +159,9 @@ export default function Profile() {
 
   const completedCount = tasks.filter((t) => t.done).length;
   const overdueCount = tasks.filter(
-    (t) => new Date(t.due_date) < new Date() && !t.done
+    (t) => normalizeDate(t.due_date) < today && !t.done
   ).length;
+
   const nearestDate =
     tasks.length > 0
       ? new Date(tasks[0].due_date).toLocaleDateString("ru-RU")
@@ -332,6 +340,9 @@ export default function Profile() {
                     </p>
                     {task.notes && <p className="notes">{task.notes}</p>}
                   </div>
+                  {!task.done && normalizeDate(task.due_date) < today && (
+                    <p className="overdue">❗Просрочено</p>
+                  )}
                 </div>
 
                 <div className="task-right">
