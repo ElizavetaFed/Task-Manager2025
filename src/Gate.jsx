@@ -28,13 +28,18 @@ export default function Gate() {
     return () => subscription?.unsubscribe();
   }, []);
 
-  // Добавляем юзера в Accounts при входе
+ 
   useEffect(() => {
     if (session?.user) {
-      supabase.from("Accounts").upsert({
-        id: session.user.id,
-        email: session.user.email,
-      });
+      supabase
+        .from("Accounts")
+        .upsert({
+          id: session.user.id,
+          email: session.user.email,
+        })
+        .then(({ data, error }) => {
+          console.log("UPSERT Accounts:", { data, error });
+        });
     }
   }, [session]);
 
